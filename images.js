@@ -1,24 +1,7 @@
-// let num = 1;
-// for (let num = 1; num < 100; num++) {
 
-// // let img = `images/IMG-20250227-WA011$(num).jpg`;
-// // console.log(img);
-// document.querySelectorAll("img").forEach(element => {
-//     element.src = `images/imgs1 (${num}).jpg`;
-// });}
-
-
-// सभी <img> तत्वों का चयन करें
-
-
-
-
-
-
-// सभी <img> तत्वों का चयन करें
 const images = document.querySelectorAll("img");
 
-// इमेज़ लोड करने के लिए एक प्रॉमिस आधारित फ़ंक्शन
+
 function loadImage(imgElement, src) {
     return new Promise((resolve, reject) => {
         imgElement.onload = () => resolve(imgElement);
@@ -27,7 +10,6 @@ function loadImage(imgElement, src) {
     });
 }
 
-// इमेज़ लोडिंग को प्रबंधित करने के लिए एक असिंक्रोनस फ़ंक्शन
 async function loadImages() {
   let x = Math.floor(Math.random()*10);
   console.log(x);
@@ -48,7 +30,7 @@ async function loadImages() {
     }
 }
 
-// इमेज़ लोडिंग प्रारंभ करें
+
 loadImages();
 
 // Function to create a new gallery item
