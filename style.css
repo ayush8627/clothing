@@ -919,8 +919,8 @@ li a.active{
         transition: background-color 0.3s;
     }
     a:hover{
-        background-color: white;
-        color: black;
+        background-color: rgb(87, 22, 22);
+        color: white;
     }
     .prev-btn {
         left: 10px;
