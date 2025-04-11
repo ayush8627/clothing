@@ -1,7 +1,5 @@
 
 const images = document.querySelectorAll("img");
-
-
 function loadImage(imgElement, src) {
     return new Promise((resolve, reject) => {
         imgElement.onload = () => resolve(imgElement);
@@ -9,10 +7,8 @@ function loadImage(imgElement, src) {
         imgElement.src = src;
     });
 }
-
 async function loadImages() {
   let x = Math.floor(Math.random()*10);
-  console.log(x);
     let index = x;
     const promises = [];
 
@@ -24,13 +20,11 @@ async function loadImages() {
 
     try {
         await Promise.all(promises);
-        console.log('सभी इमेज़ सफलतापूर्वक लोड हो गई हैं।');
+        console.log('All Images Loaded');
     } catch (error) {
         console.error(error);
     }
 }
-
-
 loadImages();
 
 // Function to create a new gallery item
