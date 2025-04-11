@@ -26,7 +26,7 @@ function createTrendItem(category, index) {
     
     const button = document.createElement('button');
     button.className = 'buy-btn';
-    button.textContent = 'Add to Cart';
+    button.textContent = 'Order Now';
     
     info.appendChild(title);
     info.appendChild(price);
