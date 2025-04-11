@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    alert("Sorry I don't have time to properly name all the items.")
     // Get all slideshow containers
     const slideshowContainers = document.querySelectorAll('.slideshow-container');
     
