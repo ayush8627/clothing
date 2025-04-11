@@ -97,4 +97,70 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial check for scroll buttons
         grid.dispatchEvent(new Event('scroll'));
     });
+    
+});
+// For open item page
+const buyButtons = document.querySelectorAll('.buy-btn');
+
+buyButtons.forEach(button => {
+  button.addEventListener('click', function () {
+    // Button ka parent (trend-item) find karo
+    const trendItem = button.closest('.trend-item');
+
+    // Uske andar ka image aur h4 dhundo
+    const image = trendItem.querySelector('img');
+    const title = trendItem.querySelector('h4');
+
+    // Console me print karo
+    console.log("Image Source:", image.src);
+    console.log("Product Name:", title.textContent);
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all Order Now buttons
+    const orderButtons = document.querySelectorAll('.buy-btn');
+    
+    // Add click event listener to each button
+    orderButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Get the product details from the parent trend-item
+            const trendItem = this.closest('.trend-item');
+            const productTitle = trendItem.querySelector('h4').textContent;
+            const productPrice = trendItem.querySelector('p').textContent;
+            const productImage = trendItem.querySelector('img').src;
+            
+            // Generate a unique ID for the product
+            const productId = trendItem.querySelector('img').id;
+            
+            // Redirect to PDP with product details as URL parameters
+            window.location.href = `pdp.html?id=${productId}&title=${encodeURIComponent(productTitle)}&price=${encodeURIComponent(productPrice)}&image=${encodeURIComponent(productImage)}`;
+        });
+    });
+
+    // Make all product images clickable
+    const productImages = document.querySelectorAll('.trend-item img, .gallery-item img');
+    productImages.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function() {
+            const trendItem = this.closest('.trend-item');
+            if (trendItem) {
+                // If it's a trend item
+                const productTitle = trendItem.querySelector('h4').textContent;
+                const productPrice = trendItem.querySelector('p').textContent;
+                const productImage = this.src;
+                const productId = this.id;
+                
+                window.location.href = `pdp.html?id=${productId}&title=${encodeURIComponent(productTitle)}&price=${encodeURIComponent(productPrice)}&image=${encodeURIComponent(productImage)}`;
+            } else {
+                // If it's a gallery item
+                const galleryItem = this.closest('.gallery-item');
+                const productTitle = galleryItem.querySelector('h3').textContent;
+                const productImage = this.src;
+                const productId = this.id;
+                
+                window.location.href = `pdp.html?id=${productId}&title=${encodeURIComponent(productTitle)}&price=${encodeURIComponent('Contact for Price')}&image=${encodeURIComponent(productImage)}`;
+            }
+        });
+    });
 });
