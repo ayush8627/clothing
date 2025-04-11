@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Bagaru Printers</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="pdp.css">
+</head>
+<body>
+    <div class="back-bar">
+        <i class="fa-solid fa-arrow-left" onclick="history.back()"></i>
+        <h3 id="back-bar-title"></h3>
+    </div>
+
+    <div class="pdp-container">
+        <div class="product-image">
+            <img id="pdp-image" src="" alt="Product Image">
+        </div>
+        <div class="product-details">
+            <h1 class="product-title" id="pdp-title"></h1>
+            <div class="product-price" id="pdp-price"></div>
+            <div class="product-description">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="size-selector">
+                <label>Select Size:</label>
+                <div class="size-options">
+                    <div class="size-option">S</div>
+                    <div class="size-option">M</div>
+                    <div class="size-option">L</div>
+                    <div class="size-option">XL</div>
+                </div>
+            </div>
+            <div class="quantity-selector">
+                <label>Quantity:</label>
+                <div class="quantity-controls">
+                    <button class="quantity-btn">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button class="quantity-btn">+</button>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button class="buy-now" id="buyNowBtn">
+                    <i class="fas fa-bolt"></i> Buy Now
+                </button>
+            </div>
+            <div class="product-meta">
+                <div class="meta-item">
+                    <i class="fas fa-truck"></i>
+                    <span>Free shipping on orders above ₹2000</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-undo"></i>
+                    <span>30 days return policy</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure payment</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="additional-sections">
+        <div class="product-details-tabs">
+            <div class="tabs">
+                <div class="tab active" data-tab="details">Product Details</div>
+                <div class="tab" data-tab="specifications">Specifications</div>
+                <div class="tab" data-tab="reviews">Reviews</div>
+            </div>
+            
+            <div class="tab-content active" id="details">
+                <h3>Product Description</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+
+            <div class="tab-content" id="specifications">
+                <div class="specifications">
+                    <div class="spec-item">
+                        <span class="spec-label">Material</span>
+                        <span>100% Cotton</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Care Instructions</span>
+                        <span>Machine Wash</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Pattern</span>
+                        <span>Printed</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Occasion</span>
+                        <span>Casual, Party</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Sleeve</span>
+                        <span>Full Sleeve</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Fit</span>
+                        <span>Regular</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="reviews">
+                <div class="reviews-container">
+                    <div class="review">
+                        <div class="review-header">
+                            <span class="reviewer-name">Rahul Sharma</span>
+                            <span class="review-date">2 days ago</span>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">Excellent product! The quality is amazing and the fit is perfect. Will definitely buy again.</p>
+                    </div>
+
+                    <div class="review">
+                        <div class="review-header">
+                            <span class="reviewer-name">Priya Patel</span>
+                            <span class="review-date">1 week ago</span>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p class="review-text">Good quality fabric and beautiful design. The color is exactly as shown in the picture.</p>
+                    </div>
+
+                    <div class="write-review">
+                        <h3>Write a Review</h3>
+                        <div class="rating-input">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                        <form class="review-form">
+                            <textarea placeholder="Write your review here..." rows="4"></textarea>
+                            <button type="submit" class="submit-review">Submit Review</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="whatsapp-message" id="whatsappMessage">
+        <button class="close-btn" id="closeBtn">×</button>
+        <h3>Redirecting to WhatsApp</h3>
+        <p>You will be redirected to WhatsApp to complete your purchase. Please confirm the details before sending the message.</p>
+        <button class="add-to-cart" id="confirmWhatsApp">Continue to WhatsApp</button>
+    </div>
+<script src="pdp.js"></script>
+</body>
+</html> 
