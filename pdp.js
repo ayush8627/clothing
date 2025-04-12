@@ -65,8 +65,8 @@
       const productTitle = document.getElementById('pdp-title').textContent;
       const productPrice = document.getElementById('pdp-price').textContent;
       const productImage = document.getElementById('pdp-image').src;
-
-      const message = `*Order Details:*%0A%0A*Product:* ${productTitle}%0A*Price:* ${productPrice}%0A*Size:* ${selectedSize}%0A*Quantity:* ${quantity}%0A%0A*Image:* ${productImage}%0A%0AI would like to purchase this item.`;
+      const message = `*Order Details:*%0A%0A*Product:* ${encodeURIComponent(productTitle)}%0A*Price:* ${encodeURIComponent(productPrice)}%0A*Size:* ${encodeURIComponent(selectedSize)}%0A*Quantity:* ${encodeURIComponent(quantity)}%0A%0A*Image:* ${encodeURIComponent(productImage)}%0A%0AI would like to purchase this item.`;
+    //  const message = `*Order Details:*%0A%0A*Product:* ${productTitle}%0A*Price:* ${productPrice}%0A*Size:* ${selectedSize}%0A*Quantity:* ${quantity}%0A%0A*Image:* ${productImage}%0A%0AI would like to purchase this item.`;
 
       const whatsappUrl = `https://wa.me/919569374626?text=${message}`;
       window.open(whatsappUrl, '_blank');
