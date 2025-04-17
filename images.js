@@ -1,5 +1,4 @@
-
-const images = document.querySelectorAll("img");
+// Function to load a single image
 function loadImage(imgElement, src) {
     return new Promise((resolve, reject) => {
         imgElement.onload = () => resolve(imgElement);
@@ -7,84 +6,118 @@ function loadImage(imgElement, src) {
         imgElement.src = src;
     });
 }
-async function loadImages() {
-  let x = Math.floor(Math.random()*10);
-    let index = x;
-    const promises = [];
-
-    images.forEach(img => {
-        const imgPath = `images/imgs1 (${index}).jpg`;
-        promises.push(loadImage(img, imgPath));
-        index++;
-    });
-
-    try {
-        await Promise.all(promises);
-        console.log('All Images Loaded');
-    } catch (error) {
-        console.error(error);
-    }
-}
-loadImages();
 
 // Function to create a new gallery item
-function createGalleryItem(collection, index) {
+function creategalleryItem(category, index) {
     const item = document.createElement('div');
     item.className = 'gallery-page-item';
     
     const img = document.createElement('img');
-    img.alt = `${collection} Design ${index}`;
+    img.alt = `${category} ${index}`;
     
-    const overlay = document.createElement('div');
-    overlay.className = 'gallery-page-overlay';
+    const info = document.createElement('div');
+    info.className = 'gallery-page-info';
     
-    const title = document.createElement('h3');
-    title.textContent = collection;
+    const title = document.createElement('h4');
+    title.textContent = getItemTitle(category, index);
     
-    const description = document.createElement('p');
-    description.textContent = getCollectionDescription(collection);
+    const price = document.createElement('p');
+    price.textContent = getItemPrice(category, index);
     
-    overlay.appendChild(title);
-    overlay.appendChild(description);
+    const button = document.createElement('button');
+    button.className = 'buy-btn';
+    button.textContent = 'Order Now';
+    
+    info.appendChild(title);
+    info.appendChild(price);
+    info.appendChild(button);
     item.appendChild(img);
-    item.appendChild(overlay);
+    item.appendChild(info);
     
     return item;
 }
 
-// Function to get collection description
-function getCollectionDescription(collection) {
-    const descriptions = {
-        'Traditional Collection': 'Explore our traditional designs',
-        'Modern Designs': 'Contemporary fashion trends',
-        'Bridal Collection': 'Exclusive bridal wear',
-        'Festival Special': 'Celebration wear'
+// Function to get item title based on category and index
+function getItemTitle(category, index) {
+    const titles = {
+        'Jaipuri Style Kurtis': [
+            'Hand Block Print Kurti',
+            'Floral Print Kurti',
+            'Geometric Print Kurti',
+            'Traditional Block Print Kurti',
+            'Modern Print Kurti',
+            'Designer Block Print Kurti'
+        ],
+        'Panabi Style Suits': [
+            'Embroidered Panabi Suit',
+            'Silk Panabi Suit',
+            'Designer Panabi Suit',
+            'Bridal Panabi Suit',
+            'Festival Panabi Suit',
+            'Casual Panabi Suit'
+        ]
     };
-    return descriptions[collection] || '';
+    return titles[category][index % titles[category].length];
+}
+
+// Function to get item price based on category and index
+function getItemPrice(category, index) {
+    const prices = {
+        'Jaipuri Style Kurtis': [
+            '₹1,499',
+            '₹1,299',
+            '₹1,799',
+            '₹2,199',
+            '₹1,899',
+            '₹2,499'
+        ],
+        'Panabi Style Suits': [
+            '₹2,999',
+            '₹3,499',
+            '₹4,999',
+            '₹5,999',
+            '₹3,999',
+            '₹2,999'
+        ]
+    };
+    return prices[category][index % prices[category].length];
 }
 
 // Function to load more gallery items
 async function loadMoreItems() {
-    const collections = ['Traditional Collection', 'Modern Designs', 'Bridal Collection', 'Festival Special'];
-    const galleryGrid = document.querySelector('.gallery-page-grid');
-    const currentItems = galleryGrid.children.length;
+    const categories = ['Jaipuri Style Kurtis', 'Panabi Style Suits'];
+    const container = document.querySelector('.gallery-page-container');
     
-    // Add 12 new items (3 from each collection)
-    for (let i = 0; i < 3; i++) {
-        collections.forEach(collection => {
-            const newItem = createGalleryItem(collection, i + 1);
-            galleryGrid.appendChild(newItem);
-        });
-    }
+    categories.forEach(category => {
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'gallery-page-category';
+        
+        const categoryTitle = document.createElement('h3');
+        categoryTitle.textContent = category;
+        
+        const grid = document.createElement('div');
+        grid.className = 'gallery-page-grid';
+        
+        // Add 6 new items for each category
+        for (let i = 0; i < 6; i++) {
+            const newItem = creategalleryItem(category, i);
+            grid.appendChild(newItem);
+        }
+        
+        categoryDiv.appendChild(categoryTitle);
+        categoryDiv.appendChild(grid);
+        container.appendChild(categoryDiv);
+    });
     
     // Load images for new items
-    const newImages = galleryGrid.querySelectorAll('img:not([src])');
-    await loadImagesForElements(newImages, currentItems + 1);
+    const newImages = container.querySelectorAll('img:not([src])');
+    await loadImagesForElements(newImages);
 }
 
 // Function to load images for specific elements
-async function loadImagesForElements(elements, startIndex) {
+async function loadImagesForElements(elements) {
     const promises = [];
+    let startIndex = Math.floor(Math.random() * 10) + 1;
     
     elements.forEach(img => {
         const imgPath = `images/imgs1 (${startIndex}).jpg`;
@@ -102,11 +135,10 @@ async function loadImagesForElements(elements, startIndex) {
 // Initial load of images
 async function loadInitialImages() {
     const images = document.querySelectorAll('img');
-    let startIndex = Math.floor(Math.random() * 10) + 1;
-    await loadImagesForElements(images, startIndex);
+    await loadImagesForElements(images);
 }
 
-// Scroll event listener for infinite scroll
+//Scroll event listener for infinite scroll
 let isLoading = false;
 window.addEventListener('scroll', () => {
     if (isLoading) return;
@@ -124,5 +156,30 @@ window.addEventListener('scroll', () => {
     }
 });
 
+    // Make all product images clickable
+    const productImages = document.querySelectorAll('.gallery-page-item img');
+    productImages.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function() {
+            const galleryItem = this.closest('.gallery-page-item');
+            if (galleryItem) {
+                // If it's a gallery item
+                const productTitle = galleryItem.querySelector('h3').textContent;
+                const productPrice = galleryItem.querySelector('p').textContent;
+                const productImage = this.src;
+                const productId = this.id;
+                
+                window.location.href = `pdp.html?id=${productId}&title=${encodeURIComponent(productTitle)}&price=${encodeURIComponent(productPrice)}&image=${encodeURIComponent(productImage)}`;
+            } else {
+                // If it's a gallery item
+                const galleryItem = this.closest('.gallery-item');
+                const productTitle = galleryItem.querySelector('h3').textContent;
+                const productImage = this.src;
+                const productId = this.id;
+                
+                window.location.href = `pdp.html?id=${productId}&title=${encodeURIComponent(productTitle)}&price=${encodeURIComponent('Contact for Price')}&image=${encodeURIComponent(productImage)}`;
+            }
+        });
+    });
 // Start the initial load
-loadInitialImages();
+loadInitialImages(); 
