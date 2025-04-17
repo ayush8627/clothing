@@ -139,22 +139,47 @@ async function loadInitialImages() {
 }
 
 // Scroll event listener for infinite scroll
-let isLoading = false;
-window.addEventListener('scroll', () => {
-    if (isLoading) return;
+// let isLoading = false;
+// window.addEventListener('scroll', () => {
+//     if (isLoading) return;
     
-    const scrollHeight = document.documentElement.scrollHeight;
-    const scrollTop = window.scrollY;
-    const clientHeight = document.documentElement.clientHeight;
+//     const scrollHeight = document.documentElement.scrollHeight;
+//     const scrollTop = window.scrollY;
+//     const clientHeight = document.documentElement.clientHeight;
     
-    // Load more when user is near the bottom (within 200px)
-    if (scrollHeight - scrollTop - clientHeight < 200) {
-        isLoading = true;
-        loadMoreItems().then(() => {
-            isLoading = false;
-        });
-    }
-});
+//     // Load more when user is near the bottom (within 200px)
+//     if (scrollHeight - scrollTop - clientHeight < 200) {
+//         isLoading = true;
+//         loadMoreItems().then(() => {
+//             isLoading = false;
+//         });
+//     }
+// });
 
+    // Make all product images clickable
+    const productImages = document.querySelectorAll('.trend-item img, .gallery-item img');
+    productImages.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function() {
+            const trendItem = this.closest('.trend-item');
+            if (trendItem) {
+                // If it's a trend item
+                const productTitle = trendItem.querySelector('h4').textContent;
+                const productPrice = trendItem.querySelector('p').textContent;
+                const productImage = this.src;
+                const productId = this.id;
+                
+                window.location.href = `pdp.html?id=${productId}&title=${encodeURIComponent(productTitle)}&price=${encodeURIComponent(productPrice)}&image=${encodeURIComponent(productImage)}`;
+            } else {
+                // If it's a gallery item
+                const galleryItem = this.closest('.gallery-item');
+                const productTitle = galleryItem.querySelector('h3').textContent;
+                const productImage = this.src;
+                const productId = this.id;
+                
+                window.location.href = `pdp.html?id=${productId}&title=${encodeURIComponent(productTitle)}&price=${encodeURIComponent('Contact for Price')}&image=${encodeURIComponent(productImage)}`;
+            }
+        });
+    });
 // Start the initial load
 loadInitialImages(); 
