@@ -923,6 +923,9 @@ li a.active{
         background-color: rgb(87, 22, 22);
         color: white;
     }
+    .c-p-d{
+        display: none;
+    }
     .prev-btn {
         left: 10px;
         font-size: 10%;
