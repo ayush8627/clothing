@@ -1,4 +1,4 @@
-  // Get product details from URL parameters
+      // Get product details from URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('id');
   const productTitle = urlParams.get('title');
