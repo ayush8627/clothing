@@ -781,6 +781,7 @@ li a.active{
     .c-p-d {
         font-size: 0.8rem;
         max-width: 95%;
+        display: none;
     }
 
     .slideshow-container {
