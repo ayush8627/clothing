@@ -104,7 +104,7 @@ const buyButtons = document.querySelectorAll('.buy-btn');
 buyButtons.forEach(button => {
   button.addEventListener('click', function () {
     // Button ka parent (trend-item) find karo
-    const trendItem = button.closest('.trend-item');
+    const trendItem = button.closest('.trend-page-item');
 
     // Uske andar ka image aur h4 dhundo
     const image = trendItem.querySelector('img');
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
     orderButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Get the product details from the parent trend-item
-            const trendItem = this.closest('.trend-item');
+            const trendItem = this.closest('.trend-page-item');
             const productTitle = trendItem.querySelector('h4').textContent;
             const productPrice = trendItem.querySelector('p').textContent;
             const productImage = trendItem.querySelector('img').src;
@@ -161,5 +161,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = `pdp.html?id=${productId}&title=${encodeURIComponent(productTitle)}&price=${encodeURIComponent('Contact for Price')}&image=${encodeURIComponent(productImage)}`;
             }
         });
+    });
+});
+
+
+// Sabhi nav links ko select karo
+const navLinks = document.querySelectorAll('nav a');
+
+// Har ek link par click hone par active class add ya remove karo
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        // Pehle sabhi links se active class hata do
+        navLinks.forEach(link => link.classList.remove('active'));
+        
+        // Clicked link ko active bana do
+        link.classList.add('active');
     });
 });
