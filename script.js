@@ -178,3 +178,6 @@ navLinks.forEach(link => {
         link.classList.add('active');
     });
 });
+document.querySelector('.active').addEventListener('click', function() {
+    location.reload();
+  });
