@@ -653,6 +653,7 @@
             align-items: center;
             position: relative;
             margin-bottom: 2rem;
+          
         }
         .fa-arrow-left{
             position: absolute;
@@ -665,6 +666,9 @@
             color: wheat;
         }
         #back-bar-title{
+            display: inline-block;
+            margin-top: .5rem;
+            font-size: 1rem;
            text-align: center;
             color: black;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
