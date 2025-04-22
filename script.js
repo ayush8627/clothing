@@ -104,7 +104,7 @@ const buyButtons = document.querySelectorAll('.buy-btn');
 buyButtons.forEach(button => {
   button.addEventListener('click', function () {
     // Button ka parent (trend-item) find karo
-    const trendItem = button.closest('.trend-page-item');
+    const trendItem = button.closest('.trend-item');
 
     // Uske andar ka image aur h4 dhundo
     const image = trendItem.querySelector('img');
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
     orderButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Get the product details from the parent trend-item
-            const trendItem = this.closest('.trend-page-item');
+            const trendItem = this.closest('.trend-item');
             const productTitle = trendItem.querySelector('h4').textContent;
             const productPrice = trendItem.querySelector('p').textContent;
             const productImage = trendItem.querySelector('img').src;
@@ -178,6 +178,3 @@ navLinks.forEach(link => {
         link.classList.add('active');
     });
 });
-document.querySelector('.active').addEventListener('click', function() {
-    location.reload();
-  });
