@@ -666,7 +666,7 @@ li a.active{
     }
 }
 
-/* /* Tablet Screens (768px to 991px) */
+/* Tablet Screens (768px to 991px) */
 @media screen and (max-width: 991px) {
     header {
         height: 80vh;
@@ -781,9 +781,10 @@ li a.active{
     .c-p-d {
         font-size: 0.8rem;
         max-width: 95%;
+    }
+    .c-p-{
         display: none;
     }
-
     .slideshow-container {
         max-width: 95vw;
     }
@@ -905,7 +906,9 @@ li a.active{
         padding: 0;
         align-items: center;
     }
-        
+    .c-p-{
+        display: none;
+    }    
     li{
       
         padding: 0;
@@ -924,9 +927,6 @@ li a.active{
         background-color: rgb(87, 22, 22);
         color: white;
     }
-    .c-p-d{
-        display: none;
-    }
     .prev-btn {
         left: 10px;
         font-size: 10%;
@@ -939,7 +939,13 @@ li a.active{
     .maxpc{
         display: none;
     }
+    .section-title, h3{
+        font-size: 1.5rem;
+    }
+    .faq-question h3 {
+        font-size: 1rem;
+    }
 
 }
 
- */
+
